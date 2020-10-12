@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t facundoalarcon/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true facundoalarcon/docker-react npm run test -- --coverage
